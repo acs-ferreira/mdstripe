@@ -79,7 +79,8 @@ class MdstripeAjaxvalidationModuleFrontController extends ModuleFrontController
             'secret_key' => Configuration::get(MdStripe::SECRET_KEY),
             'publishable_key' => Configuration::get(MdStripe::PUBLISHABLE_KEY),
         );
-
+        
+        \Stripe\Stripe::setAppInfo("MDStripe", "1.0.12", "https://github.com/firstred/mdstripe");
         \Stripe\Stripe::setApiKey($stripe['secret_key']);
 
         try {
