@@ -46,6 +46,7 @@ class MdstripeHookModuleFrontController extends ModuleFrontController
 
         if (!empty($body) && $data = Tools::jsonDecode($body, true)) {
             // Verify with Stripe
+            \Stripe\Stripe::setAppInfo("MDStripe", "1.0.12", "https://github.com/firstred/mdstripe");
             \Stripe\Stripe::setApiKey(Configuration::get(MdStripe::SECRET_KEY));
             $event = \Stripe\Event::retrieve($data['id']);
             switch ($data['type']) {
